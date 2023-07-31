@@ -4,6 +4,7 @@ let noteText;
 let saveNoteBtn;
 let newNoteBtn;
 let noteList;
+let noteId = 1;
 
 if (window.location.pathname === '/notes') {
   noteTitle = document.querySelector('.note-title');
@@ -71,7 +72,9 @@ const handleNoteSave = () => {
   const newNote = {
     title: noteTitle.value,
     text: noteText.value,
+    id: noteId
   };
+  noteId++
   saveNote(newNote).then(() => {
     getAndRenderNotes();
     renderActiveNote();
